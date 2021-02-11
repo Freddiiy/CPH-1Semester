@@ -3,7 +3,7 @@
  6.b make 3 integer variables named x, y and z. Print "Success!" if their sum is 30, but none of them may have the value of 10, 20 or 30. Otherwise print "Failure!".
  */
 
-/*//6a
+//6a
 int a = 10;
 int b = 10;
 
@@ -12,7 +12,7 @@ if (a == 10 || b == 10 || a + b == 10) {
 } else {
   println("failure");
 }
-*/
+
 
 //6b
 int x = 10;
