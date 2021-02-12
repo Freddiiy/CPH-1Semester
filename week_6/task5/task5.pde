@@ -66,6 +66,9 @@ void MethodTwo()
   case 6:
     println("Sunday");
     break;
+  default:
+    println("not a day :/");
+    break;
   }
 
 
