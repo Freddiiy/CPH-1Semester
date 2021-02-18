@@ -7,7 +7,8 @@ class Enemy {
 
   //slows down the enemy
   int timer = 0;
-  int timerAccept = 15;
+  // random speed of the enenmy
+  int timerAccept = (int)random(10, 40);
   int timerReset = 0;
 
   Enemy(int x, int y, Player player) {
@@ -19,9 +20,9 @@ class Enemy {
   void update() {
     moveToPlayer();
     timer();
+    randomMove(0, 20);
     outOfBoundsDetection();
     playerDetection();
-    randomMove(0, 20);
   }
 
   void moveToPlayer() {
@@ -31,23 +32,21 @@ class Enemy {
     boolean playerIsDown = player.y > this.y;
 
     boolean acceptInput = timer > timerAccept;
-    if (game == 2) {
-      if (playerIsLeft && acceptInput) {
-        this.x -= 1;
-        timer = timerReset;
-      }
-      if (playerIsRight && acceptInput) {
-        this.x += 1;
-        timer = timerReset;
-      }
-      if (PlayerIsUp && acceptInput) {
-        this.y -= 1;
-        timer = timerReset;
-      }
-      if (playerIsDown && acceptInput) {
-        this.y += 1;
-        timer = timerReset;
-      }
+    if (playerIsLeft && acceptInput) {
+      this.x -= 1;
+      timer = timerReset;
+    }
+    if (playerIsRight && acceptInput) {
+      this.x += 1;
+      timer = timerReset;
+    }
+    if (PlayerIsUp && acceptInput) {
+      this.y -= 1;
+      timer = timerReset;
+    }
+    if (playerIsDown && acceptInput) {
+      this.y += 1;
+      timer = timerReset;
     }
   }
 
@@ -74,19 +73,17 @@ class Enemy {
   }
 
   void outOfBoundsDetection() {
-    if (game == 2) {
-      if (this.x <= 0) {
-        this.x = 0;
-      }
-      if (this.x >= gridGame.mapSize-1) {
-        this.x = gridGame.mapSize-1;
-      }
-      if (this.y <= 0) {
-        this.y = 0;
-      }
-      if (this.y >= gridGame.mapSize-1) {
-        this.y = gridGame.mapSize-1;
-      }
+    if (this.x <= 0) {
+      this.x = 0;
+    }
+    if (this.x >= gridGame.mapSize-1) {
+      this.x = gridGame.mapSize-1;
+    }
+    if (this.y <= 0) {
+      this.y = 0;
+    }
+    if (this.y >= gridGame.mapSize-1) {
+      this.y = gridGame.mapSize-2;
     }
   }
 

@@ -9,6 +9,7 @@ class GridGame {
     clearMap();
     update();
     drawMap();
+    gameOver();
   }
 
   void clearMap() {
@@ -35,12 +36,19 @@ class GridGame {
     player.update();
     //grid[enemy.x] [enemy.y] = enemy.cSwitch;
     //enemy.update();
-    grid[food.x] [food.y] = food.cSwitch;
-    food.update();
+    //grid[food.x] [food.y] = food.cSwitch;
+    //food.update();
 
+    // Controls the enemies seperately
     for (int i = 0; i < enemy.length; i++) {
       grid[enemy[i].x] [enemy[i].y] = enemy[i].cSwitch;
       enemy[i].update();
+    }
+
+    // ^same for food
+    for (int i = 0; i < food.length; i++) {
+      grid[food[i].x] [food[i].y] = food[i].cSwitch;
+      food[i].update();
     }
   }
 
@@ -68,5 +76,17 @@ class GridGame {
       break;
     }
     return c;
+  }
+
+  void gameOver() {
+    boolean playerIsDead = player.hp <= 0;
+    if (playerIsDead) {
+      textSize(128);
+      textAlign(CENTER);
+      fill(255);
+      text("GAME OVER", width/2, height/2);
+      textSize(64);
+      text("click to restart", width/2, height/2+70);
+    }
   }
 }

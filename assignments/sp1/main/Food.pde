@@ -24,34 +24,9 @@ class Food {
   }
 
   void moveFood() {
-    //boolean playerIsLeft = player.x < this.x;
-    //boolean playerIsRight = player.x > this.x;
-    //boolean PlayerIsUp = player.y < this.y;
-    //boolean playerIsDown = player.y > this.y;
-
-    //boolean acceptInput = timer > timerAccept;
-    //if (game == 2) {
-    //  if (playerIsLeft && acceptInput) {
-    //    this.x += 1;
-    //    timer = timerReset;
-    //  }
-    //  if (playerIsRight && acceptInput) {
-    //    this.x -= 1;
-    //    timer = timerReset;
-    //  }
-    //  if (PlayerIsUp && acceptInput) {
-    //    this.y += 1;
-    //    timer = timerReset;
-    //  }
-    //  if (playerIsDown && acceptInput) {
-    //    this.y -= 1;
-    //    timer = timerReset;
-    //  }
-    //}
-    //move direction
     boolean acceptInput = timer > timerAccept;
     int md = (int)random(0, 3);
-    
+
     // up
     if (md == 0 && acceptInput) {
       this.y -= 1;
@@ -75,22 +50,19 @@ class Food {
   }
 
   void outOfBoundsDetection() {
-    if (game == 2) {
-      if (this.x <= 0) {
-        this.x = 0;
-      }
-      if (this.x >= gridGame.mapSize-1) {
-        this.x = gridGame.mapSize-1;
-      }
-      if (this.y <= 0) {
-        this.y = 0;
-      }
-      if (this.y >= gridGame.mapSize-1) {
-        this.y = gridGame.mapSize-1;
-      }
+    if (this.x <= 0) {
+      this.x = 0;
+    }
+    if (this.x >= gridGame.mapSize-1) {
+      this.x = gridGame.mapSize-1;
+    }
+    if (this.y <= 0) {
+      this.y = 0;
+    }
+    if (this.y >= gridGame.mapSize-1) {
+      this.y = gridGame.mapSize-1;
     }
   }
-
   void playerDetection() {
     if (this.x == player.x && this.y == player.y) {
       player.hp += 1;
