@@ -12,21 +12,19 @@ TransitionMaker transition = new TransitionMaker();
 GridGame gridGame = new GridGame();
 FallGame fallGame = new FallGame();
 Player player = new Player(16, 16);
-Enemy enemy[] = new Enemy[3];
-//Enemy enemy = new Enemy(20, 20, player);
+Enemy enemy[] = new Enemy[5];
 Food food = new Food(20, 10, player);
 
 void setup() {
   size(1024, 1024);
   //playMusic();
-  enemy[0] = new Enemy(20, 20, player);
-  enemy[1] = new Enemy(1, 1, player);
-  enemy[2] = new Enemy(10, 20, player);
-  game = 0;
+  for (int i = 0; i < enemy.length; i++) {
+    enemy[i] = new Enemy((int)random(0, gridGame.mapSize),(int)random(0, gridGame.mapSize), player);
+  }
+  game = 2;
 }
 
 int timer = 0;
-boolean game3 = false;
 void draw() {
   if (timer > 1380) {
     gameTimer();

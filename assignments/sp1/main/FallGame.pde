@@ -15,6 +15,7 @@ class FallGame {
   void drawMap() {
     rectMode(CORNER);
     fill(colorSwitch(1));
+    noStroke();
     rect(playerX, playerY, playerSize, playerSize);
   }
   
