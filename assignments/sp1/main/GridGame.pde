@@ -10,6 +10,7 @@ class GridGame {
     update();
     drawMap();
     gameOver();
+    ui();
   }
 
   void clearMap() {
@@ -78,15 +79,39 @@ class GridGame {
     return c;
   }
 
+  void ui() {
+    textSize(32);
+    textAlign(CORNER);
+    fill(255);
+    text("Health: " + player.hp, width-width+10, height-10);
+  }
   void gameOver() {
     boolean playerIsDead = player.hp <= 0;
     if (playerIsDead) {
+      background(0);
       textSize(128);
       textAlign(CENTER);
       fill(255);
       text("GAME OVER", width/2, height/2);
       textSize(64);
-      text("click to restart", width/2, height/2+70);
+      text("Press R to Restart", width/2, height/2+70);
+    }
+    if (keyPressed) {
+      if (key == 'r' && playerIsDead) {
+        // spawns multiple enemies in the grid at random positions
+        for (int i = 0; i < enemy.length; i++) {
+          enemy[i].x = ((int)random(0, gridGame.mapSize));
+          enemy[i].y = ((int)random(0, gridGame.mapSize));
+        }
+        // same for food
+        for (int i = 0; i < food.length; i++) {
+          food[i].x = ((int)random(0, gridGame.mapSize));
+          food[i].y = ((int)random(0, gridGame.mapSize));
+        }
+        player.x = 16;
+        player.y = 16;
+        player.hp = 3;
+      }
     }
   }
 }

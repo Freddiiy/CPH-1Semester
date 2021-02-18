@@ -2,14 +2,14 @@ import processing.sound.*;
 
 //wraps up everything to be displayed and logic for game switch
 int game;
-int gameCount = 5;
+int gameCount = 3;
 
 // game time between games
 int gameTime = 0;
 int gameTimeEnd = 400;
 int gameTimeReset = 0;
 
-Interface ui = new Interface();
+//Interface ui = new Interface();
 TransitionMaker transition = new TransitionMaker();
 GridGame gridGame = new GridGame();
 FallGame fallGame = new FallGame();
@@ -29,23 +29,15 @@ void setup() {
   for (int i = 0; i < food.length; i++) {
     food[i] = new Food((int)random(0, gridGame.mapSize), (int)random(0, gridGame.mapSize), player);
   }
-  
-  game = 2;
+
+  game = 1;
 }
 
 int timer = 0;
 void draw() {
-  if (timer > 1380) {
-    gameTimer();
-  }
+  gameTimer();
   switch(game) {
   case 0:
-    if (timer > 1380) {
-      game = 2;
-    } else {    
-      timer++;
-      println(timer);
-    }
     break;
   case 1:
     transition.render();

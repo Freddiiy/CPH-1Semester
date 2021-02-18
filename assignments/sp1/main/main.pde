@@ -1,8 +1,8 @@
 //Interface ui = new Interface();
-GridGame gridGame = new GridGame();
 Player player = new Player(16, 16);
 Enemy enemy[] = new Enemy[3];
 Food food [] = new Food[3];
+GridGame gridGame = new GridGame();
 
 void setup() {
   size(1024, 1024);
