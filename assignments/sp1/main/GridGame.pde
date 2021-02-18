@@ -1,3 +1,4 @@
+// game 2, default game
 class GridGame {
   int mapSize = 32;
   int gridSize = mapSize;
@@ -31,8 +32,16 @@ class GridGame {
 
   void update() {
     grid[player.x][player.y] = player.cSwitch;
-    grid[enemy.x] [enemy.y] = enemy.cSwitch;
     player.update();
+    //grid[enemy.x] [enemy.y] = enemy.cSwitch;
+    //enemy.update();
+    grid[food.x] [food.y] = food.cSwitch;
+    food.update();
+
+    for (int i = 0; i < enemy.length; i++) {
+      grid[enemy[i].x] [enemy[i].y] = enemy[i].cSwitch;
+      enemy[i].update();
+    }
   }
 
   color colorSwitch(int cSwitch) {
@@ -50,8 +59,9 @@ class GridGame {
     case 2:
       c = color(255, 0, 0);
       break;
+      //food color
     case 3:
-      c = color(0, 0, 255);
+      c = color(139, 0, 139);
       break;
     case 4:
       c = color(0, 255, 255);

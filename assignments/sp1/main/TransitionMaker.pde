@@ -1,3 +1,5 @@
+// Makes a transtition between the mini games. When the mini games is not the mini games it will return to the mini game
+
 class TransitionMaker {
   int size = 1024;
   int l = 1; //length of static

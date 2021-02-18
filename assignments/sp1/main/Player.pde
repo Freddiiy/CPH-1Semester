@@ -1,8 +1,11 @@
-class Player{
+// Controls for the player across games
+class Player {
   int x;
   int y;
   int cSwitch = 1;
   int hp;
+  int score = 0;
+  int speed = 5;
 
   // slowing down the player so they dont fly around
   int timer = 0;
@@ -15,6 +18,7 @@ class Player{
     hp = 3;
   }
   void update() {
+    println(hp);
     playerController();
     outOfBoundsDetection();
     timer();
@@ -24,7 +28,9 @@ class Player{
   }
 
   void playerController() {
-    if(game == 2) {
+    //game 2 is default gridgame controls
+    if (game == 2) {
+      println("GAME 2");
       boolean acceptInput = timer > timerAccept;
       if (keyPressed) {
         if (keyCode == UP && acceptInput || key == 'w' && acceptInput) {
@@ -42,41 +48,42 @@ class Player{
         }
       }
     }
+
+    // game 3 fallgame player controls
+    if (game == 3) {
+      speed = 5;
+      println("GAME 3");
+      if (keyPressed) {
+        if (keyCode == LEFT || key == 'a') {
+          fallGame.playerX -= speed;
+          println("LEFT");
+        } else if (keyCode == RIGHT  || key == 'd') {
+          fallGame.playerX += speed;
+          println("RIGHT");
+        }
+      }
+    }
   }
 
-  //void keyPressed() {
-  //  if (key == UP /*|| input == 'w' || input == 'W'*/) {
-  //    this.x -= 1;
-  //  }
-  //  else if (key == DOWN /*|| input == 's' || input == 'S'*/) {
-  //    this.x += 1;
-  //  }
-  //  else if (key == LEFT /*|| input == 'a' || input == 'A'*/) {
-  //    this.y -= 1;
-  //  }
-  //  else if (key == RIGHT /*|| input == 'd' || input == 'D'*/) {
-  //    this.y += 1;
-  //  }
-  //}
 
   void outOfBoundsDetection() {
-    if (this.x <= 0) {
-      this.x = 0;
-    }
-    if (this.x >= gridGame.mapSize-1) {
-      this.x = gridGame.mapSize-1;
-    }
-    if (this.y <= 0) {
-      this.y = 0;
-    }
-    if (this.y >= gridGame.mapSize-1) {
-      this.y = gridGame.mapSize-1;
+    if (game == 2) {
+      if (this.x <= 0) {
+        this.x = 0;
+      }
+      if (this.x >= gridGame.mapSize-1) {
+        this.x = gridGame.mapSize-1;
+      }
+      if (this.y <= 0) {
+        this.y = 0;
+      }
+      if (this.y >= gridGame.mapSize-1) {
+        this.y = gridGame.mapSize-1;
+      }
     }
   }
+
   public void timer() {
     this.timer++;
-    //if (timer <= 0) {
-    //  timer = 0;
-    //}
   }
 }
