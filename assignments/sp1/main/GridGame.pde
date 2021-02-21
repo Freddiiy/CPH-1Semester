@@ -9,8 +9,8 @@ class GridGame {
     clearMap();
     update();
     drawMap();
-    gameOver();
     ui();
+    gameOver();
   }
 
   void clearMap() {
