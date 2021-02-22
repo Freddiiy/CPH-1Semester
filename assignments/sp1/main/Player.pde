@@ -18,7 +18,6 @@ class Player {
     hp = 3;
   }
   void update() {
-    println(hp);
     playerController();
     outOfBoundsDetection();
     timer();
@@ -29,7 +28,6 @@ class Player {
 
   void playerController() {
     //game 2 is default gridgame controls
-    println("GAME 2");
     boolean acceptInput = timer > timerAccept;
     if (keyPressed) {
       if (keyCode == UP && acceptInput || key == 'w' && acceptInput) {
