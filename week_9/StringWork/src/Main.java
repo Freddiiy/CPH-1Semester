@@ -31,8 +31,8 @@ public class Main {
 
         //printWordsWithDoubleConsonant();
         //printLongestSentence();
-        //printPartOfWord("Cock", 0, 6);
-        printIfPalindrome("cooc");
+        printPartOfWord("Cock", 0, 6);
+        //printIfPalindrome("coooooc");
 
     }
 
@@ -106,7 +106,11 @@ public class Main {
             System.out.println("Part of word " + word);
             System.out.println(word.substring(index, length));
         } catch (StringIndexOutOfBoundsException ex) {
-            System.out.println("bruh parameter 2 er for stort");
+            if (word.length() < length) {
+                System.out.println(word.substring(index, word.length()));
+            } else {
+                System.out.println("bruh parameter 2 er for stort");
+            }
         }
 
     }
