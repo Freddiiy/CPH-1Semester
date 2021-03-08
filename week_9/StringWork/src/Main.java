@@ -30,8 +30,8 @@ public class Main {
         //test dine metoder ved at kalde dem her:
 
         //printWordsWithDoubleConsonant();
-        //printLongestSentence();
-        printPartOfWord("Cock", 0, 6);
+        printLongestSentence();
+        //printPartOfWord("Cock", 0, 6);
         //printIfPalindrome("coooooc");
 
     }
@@ -68,7 +68,7 @@ public class Main {
     }
 
     // task 1
-    // Jeg kunne ikke finde ud af en sej løsning. Er dum hjælp mig
+    // Jeg kunne ikke finde ud af en sej løsning.
     private static void printWordsWithDoubleConsonant() {
         String[] doubleConsonant = {"bb", "cc", "dd", "ff", "gg", "hh", "jj", "kk", "ll", "mm", "nn", "pp", "rr", "ss", "tt", "vv", "ww", "xx", "zz"};
         String word;
@@ -76,7 +76,7 @@ public class Main {
             for (int j = 0; j < text[i].length; j++) {                      // for loop every word in the line
                 word = text[i][j];
                 for (int k = 0; k < doubleConsonant.length; k++) {          // for loop every possible double consonant
-                    if (word.contains(doubleConsonant[k])) {                // checks if word contains double consonant
+                    if (word.toLowerCase().contains(doubleConsonant[k])) {  // checks if word contains double consonant
                         System.out.println(word);
                     }
                 }
