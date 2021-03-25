@@ -42,7 +42,7 @@ public class DieselCar extends Car{
         }
 
         if (hasParticleFilter == false) {
-            charge = +1000;
+            charge += 1000;
         }
         return charge;
     }
