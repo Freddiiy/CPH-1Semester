@@ -13,10 +13,10 @@ public class Main {
 
 
             if(words[i].length() > 3) {
-                words[i] = words[i].toLowerCase();
+                words[i].toLowerCase();
                 System.out.println("test1 " + words[i]);
                 char[] wordCharArray = words[i].toCharArray();
-                wordCharArray[0] = Character.toUpperCase(wordCharArray[0]);
+                Character.toUpperCase(wordCharArray[0]);
                 words[i] = new String(wordCharArray);
                 System.out.println("test2 " + words[i]);
             }
